@@ -127,14 +127,22 @@ const Admission = () => {
               placeholder: "Enter local guardian's phone",
             },
             {
-              type: "text",
+              textarea: {
+                name: "address",
+                id: "address",
+                rows: "3",
+              },
               label: "Local/Current (Residing) Address",
               required: true,
               placeholder: "Enter current address ",
             },
 
             {
-              type: "text",
+              textarea: {
+                name: "address",
+                id: "address",
+                rows: "3",
+              },
               label: "Permanent Address",
               required: true,
               placeholder: "Enter permanent address",
