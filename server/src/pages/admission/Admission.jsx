@@ -32,31 +32,31 @@ const Admission = () => {
             },
             {
               type: "text",
-              lable: "Mother Tongue",
+              label: "Mother Tongue",
               required: true,
               placeholder: "Enter mother tongue",
             },
             {
               type: "text",
-              lable: "Religion",
+              label: "Religion",
               required: true,
               placeholder: "Religion",
             },
             {
               type: "text",
-              lable: "Aadhar No",
+              label: "Aadhar No",
               required: true,
               placeholder: "Enter aadhar",
             },
             {
               type: "text",
-              lable: "Category",
+              label: "Category",
               required: true,
               placeholder: "Categogy",
             },
             {
               type: "text",
-              lable: "Father's Name",
+              label: "Father's Name",
               required: true,
               placeholder: "Enter father's name",
             },
@@ -86,7 +86,7 @@ const Admission = () => {
             },
             {
               type: "text",
-              lable: "Mother's Name",
+              label: "Mother's Name",
               required: true,
               placeholder: "Enter mother's name",
             },
@@ -120,6 +120,7 @@ const Admission = () => {
               required: true,
               placeholder: "Enter local guardian's name",
             },
+            { type: "title", label: "Contact Information" },
             {
               type: "number",
               label: "Local Guardian's Phone",
@@ -127,48 +128,58 @@ const Admission = () => {
               placeholder: "Enter local guardian's phone",
             },
             {
-              textarea: {
-                name: "address",
-                id: "address",
-                rows: "3",
-              },
+              type: "mutiple",
+              name: "address",
+              id: "address",
+              rows: "3",
               label: "Local/Current (Residing) Address",
               required: true,
               placeholder: "Enter current address ",
             },
 
             {
-              textarea: {
-                name: "address",
-                id: "address",
-                rows: "3",
-              },
+              type: "mutiple",
+              name: "address",
+              id: "address",
+              rows: "3",
               label: "Permanent Address",
               required: true,
               placeholder: "Enter permanent address",
             },
-
-            { type: "title", label: "identity details" },
-          ].map((ele, i) => {
-            if (ele.type === "title")
+          ].map(({ type, label, placeholder, required, ...rest }, i) => {
+            if (type === "title")
               return (
                 <div key={i} className={styles.title}>
-                  {ele.label}
+                  {label}
+                </div>
+              );
+
+            if (type === "multiple")
+              return (
+                <div key={i} className={styles.formGroup}>
+                  <label>{label}</label>
+                  <textarea
+                    placeholder={placeholder}
+                    required={required}
+                    {...rest}
+                  ></textarea>
                 </div>
               );
 
             return (
               <div key={i} className={styles.formGroup}>
-                <label>{ele.label}</label>
+                <label>{label}</label>
                 <input
-                  type={ele.type}
-                  placeholder={ele.placeholder}
-                  required={ele.required}
+                  type={type}
+                  placeholder={placeholder}
+                  required={required}
+                  {...rest}
                 />
               </div>
             );
           })}
         </form>
+
         <div className="acknowleged">
           <div className="acknowleged__container">
             <h2

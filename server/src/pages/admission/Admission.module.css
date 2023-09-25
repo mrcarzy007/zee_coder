@@ -48,6 +48,10 @@
   display: flex;
   flex-direction: column;
 
+  &:has(textarea) {
+    grid-row: 1 / span 2;
+  }
+
   & > label {
     color: #333;
     font-size: 14px;
@@ -67,9 +71,9 @@
     border: 1px solid #afafaf;
   }
 }
-/* Acknowledgement  */
-/* .acknowleged__container h3 {
+
+Acknowledgement .acknowleged__container h3 {
   text-align: center;
   color: black;
   font-weight: bold;
-} */
+}
